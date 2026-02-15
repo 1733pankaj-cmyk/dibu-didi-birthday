@@ -1,0 +1,147 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Dibu Didi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    transition: background 2s ease;
+}
+
+.container {
+    max-width: 650px;
+    padding: 30px;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease forwards;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.8;
+    animation: fadeIn 3s ease forwards;
+}
+
+button {
+    margin-top: 30px;
+    padding: 14px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 40px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="content">
+    <p id="introText"></p>
+</div>
+
+<audio id="bgMusic" loop>
+    <!-- Royalty free soft instrumental -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5f3b0f6b4b.mp3?filename=beautiful-piano-ambient-110624.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+const introMessage = "Some relationships are written by destiny… some are built by love…";
+let index = 0;
+
+function typeEffect() {
+    if (index < introMessage.length) {
+        document.getElementById("introText").innerHTML += introMessage.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50);
+    } else {
+        setTimeout(showButton, 1000);
+    }
+}
+
+function showButton() {
+    document.getElementById("content").innerHTML += 
+    '<br><button onclick="reveal()">Open My Heart</button>';
+}
+
+function reveal() {
+    document.body.style.background = "linear-gradient(135deg,#ff6a88,#ff99ac)";
+    document.getElementById("bgMusic").play();
+
+    document.getElementById("content").innerHTML = `
+        <h1>🎂 Happy Birthday Dibu Didi 🎂</h1>
+        <p>
+        You are not just my elder sister…<br>
+        You are my guide, my protector, and my strength.<br><br>
+
+        Even though we are far apart,<br>
+        the bond we share only grows stronger every day. ❤️<br><br>
+
+        I miss you more than I say.<br>
+        I respect you more than you know.<br>
+        And I will always be your little one.<br><br>
+
+        May this year bring you happiness,<br>
+        peace, success, and everything your heart desires.
+        </p>
+    `;
+
+    createHearts();
+}
+
+function createHearts() {
+    for (let i = 0; i < 40; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(heart);
+    }
+}
+
+typeEffect();
+
+</script>
+
+</body>
+</html>
